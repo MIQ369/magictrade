@@ -1049,7 +1049,7 @@ function updateCountdown() {
   const s = Math.floor((diff % 60000) / 1000);
   document.getElementById('days').textContent  = String(d).padStart(2,'0');
   document.getElementById('hours').textContent = String(h).padStart(2,'0');
-  document.getElementById('mins').textContent  = String(m).padStart(2,'0');
+  document.getElementById('mins').textContent  = String(m).padStart(2,'0'); 
   document.getElementById('secs').textContent  = String(s).padStart(2,'0');
 }
 
