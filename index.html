@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -788,7 +788,7 @@ footer {
         <div class="m-row">
           <span class="m-label">Risk $</span>
           <span class="m-input" id="mRisk">500</span>
-          <span class="m-label" style="margin-left:auto">Ordin</span>
+          <span class="m-label" style="margin-left:auto">Order</span>
           <span class="m-select">Market ▾</span>
         </div>
         <!-- Show Magic -->
@@ -808,7 +808,7 @@ footer {
           <button class="m-btn-gear">⚙</button>
         </div>
         <!-- Status -->
-        <div class="m-status" id="mStatus">SHOW MAGIC → seteaza → EXECUTE</div>
+        <div class="m-status" id="mStatus">SHOW MAGIC → set → EXECUTE</div>
       </div>
 
       <!-- LIVE INFO -->
@@ -837,12 +837,12 @@ footer {
         <div class="m-section-label">⚙ &nbsp;MANAGEMENT</div>
         <button class="m-btn-be">⚡ &nbsp;BREAKEVEN</button>
         <div class="m-row" style="margin:8px 0 4px">
-          <span class="m-check">✔ BE automat</span>
-          <span class="m-check-off" style="margin-left:auto">▢ Partial close</span>
+          <span class="m-check">✔ Auto BE</span>
+          <span class="m-check-off" style="margin-left:auto">▢ Partial Close</span>
         </div>
         <div class="m-row" style="margin-bottom:8px">
-          <span class="m-dim">La R:</span><span class="m-input-sm">1.0</span>
-          <span class="m-dim" style="margin-left:auto">La R:</span><span class="m-input-sm">1.0</span>
+          <span class="m-dim">at R:</span><span class="m-input-sm">1.0</span>
+          <span class="m-dim" style="margin-left:auto">at R:</span><span class="m-input-sm">1.0</span>
           <span class="m-dim">%:</span><span class="m-input-sm">50</span>
         </div>
         <div class="m-group-lbl buy-lbl">BUY</div>
@@ -871,6 +871,13 @@ footer {
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- SEPARATOR -->
+  <div style="width:100%;max-width:480px;display:flex;align-items:center;gap:16px;margin:8px 0 32px;animation:fadeDown 0.8s ease 0.38s both;">
+    <div style="flex:1;height:1px;background:linear-gradient(to right,transparent,#1e2535)"></div>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#3a4455;letter-spacing:0.15em;text-transform:uppercase;white-space:nowrap">Early Access Offer</span>
+    <div style="flex:1;height:1px;background:linear-gradient(to left,transparent,#1e2535)"></div>
   </div>
 
   <div class="offer">
@@ -950,12 +957,12 @@ function toggleLines() {
   if (linesShown) {
     btn.style.background = '#1a4a2a';
     btn.style.boxShadow = '0 0 12px rgba(0,230,118,0.3)';
-    document.getElementById('mStatus').textContent = 'Liniile sunt setate → EXECUTE';
+    document.getElementById('mStatus').textContent = 'Lines are set → EXECUTE';
     startDemo();
   } else {
     btn.style.background = '#0a3d1a';
     btn.style.boxShadow = 'none';
-    document.getElementById('mStatus').textContent = 'SHOW MAGIC → seteaza → EXECUTE';
+    document.getElementById('mStatus').textContent = 'SHOW MAGIC → set → EXECUTE';
     stopDemo();
   }
 }
