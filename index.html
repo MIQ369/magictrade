@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>888 MagicTrade — Coming Soon</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #060809;
+  --dark: #0a0d10;
+  --card: #0f1318;
+  --border: #1a2030;
+  --green: #00e676;
+  --green-dim: #00c85a;
+  --green-dark: #002d14;
+  --orange: #ff6d00;
+  --white: #eef2ff;
+  --gray: #7a8494;
+  --gray-light: #a8b4c4;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* CHART BG */
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.chart-bg {
+  position: fixed;
+  inset: 0;
+  background-image: url('chart_bg.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.12;
+  filter: blur(2px);
+  z-index: 0;
+}
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,230,118,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,230,118,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridMove 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes gridMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(60px); }
+}
+
+/* GLOW */
+.glow {
+  position: fixed;
+  top: -300px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(circle, rgba(0,230,118,0.07) 0%, transparent 65%);
+  pointer-events: none;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
+  50% { opacity: 0.6; transform: translateX(-50%) scale(1.1); }
+}
+
+/* NOISE */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* MAIN */
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+/* LOGO */
+.logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 60px;
+  animation: fadeDown 0.8s ease both;
+}
+
+.logo span { color: var(--green); }
+
+/* BADGE */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green-dark);
+  border: 1px solid rgba(0,230,118,0.25);
+  color: var(--green);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  padding: 7px 18px;
+  border-radius: 2px;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  animation: fadeDown 0.8s ease 0.1s both;
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: blink 1.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+/* HEADLINE */
+h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(64px, 14vw, 160px);
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  animation: fadeDown 0.8s ease 0.2s both;
+}
+
+h1 .accent {
+  color: var(--green);
+  display: block;
+  position: relative;
+}
+
+h1 .accent::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0; right: 0;
+  height: 3px;
+  background: var(--green);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: lineReveal 1s ease 1s both;
+}
+
+@keyframes lineReveal {
+  to { transform: scaleX(1); }
+}
+
+/* SUBHEADLINE */
+.sub {
+  font-size: clamp(15px, 2.5vw, 19px);
+  color: var(--gray-light);
+  max-width: 500px;
+  line-height: 1.65;
+  margin-bottom: 16px;
+  animation: fadeDown 0.8s ease 0.3s both;
+}
+
+/* OFFER */
+.offer {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 52px;
+  animation: fadeDown 0.8s ease 0.35s both;
+}
+
+.offer-tag {
+  background: var(--orange);
+  color: #fff;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  padding: 4px 14px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+.offer-text {
+  font-size: 15px;
+  color: var(--gray-light);
+  font-weight: 500;
+}
+
+/* FORM */
+.form-wrap {
+  width: 100%;
+  max-width: 480px;
+  animation: fadeDown 0.8s ease 0.4s both;
+}
+
+.form-inner {
+  display: flex;
+  gap: 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.form-inner:focus-within {
+  border-color: rgba(0,230,118,0.4);
+  box-shadow: 0 0 0 3px rgba(0,230,118,0.06);
+}
+
+.form-inner input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 16px 20px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 15px;
+  color: var(--white);
+}
+
+.form-inner input::placeholder { color: var(--gray); }
+
+.form-inner button {
+  background: var(--green);
+  color: var(--black);
+  border: none;
+  padding: 16px 28px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.form-inner button:hover { background: var(--green-dim); }
+
+.form-note {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--gray);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* SUCCESS STATE */
+.success {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  animation: fadeDown 0.5s ease both;
+}
+
+.success-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--green-dark);
+  border: 2px solid var(--green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.success-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.success-sub {
+  font-size: 14px;
+  color: var(--gray-light);
+  max-width: 340px;
+  line-height: 1.6;
+}
+
+/* MOCKUP */
+.mockup-wrap {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 40px;
+}
+
+.mockup-outer {
+  background: #0d1018;
+  border: 1px solid #1e2535;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(0,230,118,0.08), 0 20px 60px rgba(0,0,0,0.6);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+}
+
+.mockup-titlebar {
+  background: #080a0e;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #1e2535;
+}
+
+.mockup-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #c8a84b;
+  letter-spacing: 0.1em;
+}
+
+.mockup-x {
+  background: #501020;
+  color: #ff6b8a;
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.mockup-body {
+  padding: 8px 10px;
+  border-bottom: 1px solid #1e2535;
+}
+
+.mockup-section {
+  padding: 8px 10px;
+  border-top: 1px solid #1e2535;
+}
+
+.m-section-label {
+  font-size: 10px;
+  color: #5a6478;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.m-info-row { display: flex; gap: 12px; margin-bottom: 4px; }
+.m-label { color: #8892a4; font-size: 10px; }
+.m-dim { color: #5a6478; font-size: 10px; }
+
+.m-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
+}
+
+.m-input {
+  background: #1a2030;
+  border: 1px solid #2a3045;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 2px;
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  min-width: 50px;
+}
+
+.m-input-sm {
+  background: #1a2030;
+  border: 1px solid #2a3045;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  min-width: 32px;
+  text-align: center;
+}
+
+.m-select {
+  background: #1a2030;
+  border: 1px solid #2a3045;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 2px;
+  font-size: 10px;
+}
+
+.m-row-btns {
+  display: flex;
+  gap: 4px;
+  margin: 4px 0;
+}
+
+.m-btn-show {
+  flex: 3;
+  background: #0a3d1a;
+  border: 1px solid rgba(0,230,118,0.4);
+  color: #00e676;
+  padding: 10px;
+  border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  transition: background 0.15s;
+}
+
+.m-btn-follow {
+  flex: 1;
+  background: #1a3a1a;
+  border: 1px solid rgba(0,230,118,0.3);
+  color: #00e676;
+  padding: 10px;
+  border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.m-btn-exec {
+  flex: 3;
+  background: #4a1a8a;
+  border: 1px solid rgba(180,100,255,0.4);
+  color: #d4a0ff;
+  padding: 12px;
+  border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.08em;
+}
+
+.m-btn-dir {
+  flex: 1;
+  background: #0a3d1a;
+  border: 1px solid rgba(0,230,118,0.4);
+  color: #00e676;
+  padding: 12px;
+  border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.m-btn-reset {
+  flex: 1;
+  background: #1a1e28;
+  border: 1px solid #2a3045;
+  color: #8892a4;
+  padding: 7px;
+  border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.m-btn-close {
+  flex: 2;
+  background: #3d0a18;
+  border: 1px solid rgba(220,30,60,0.4);
+  color: #ff4060;
+  padding: 7px;
+  border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.m-btn-gear {
+  flex: 1;
+  background: #0a2a0a;
+  border: 1px solid rgba(0,230,118,0.3);
+  color: #00e676;
+  padding: 7px;
+  border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.m-status {
+  font-size: 9px;
+  color: #3a4455;
+  margin-top: 6px;
+  letter-spacing: 0.05em;
+}
+
+.m-pnl-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 52px;
+  font-weight: 900;
+  color: #fff;
+  text-align: center;
+  line-height: 1;
+  margin: 8px 0;
+  transition: color 0.3s;
+}
+
+.m-pnl-row {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+.m-pnl-col { text-align: center; }
+.m-pnl-lbl { font-size: 9px; color: #5a6478; letter-spacing: 0.12em; margin-bottom: 2px; }
+.m-pnl-val { font-size: 18px; font-weight: 700; font-family: 'Barlow Condensed', sans-serif; }
+.loss .m-pnl-val { color: #ff4060; }
+.profit .m-pnl-val { color: #00e676; }
+
+.m-entry-info {
+  font-size: 10px;
+  color: #6a8898;
+  text-align: center;
+  line-height: 2;
+}
+
+.m-btn-be {
+  width: 100%;
+  background: #8a3200;
+  border: 2px solid rgba(255,109,0,0.5);
+  color: #fff;
+  padding: 12px;
+  border-radius: 4px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  margin-bottom: 8px;
+  transition: background 0.15s;
+}
+
+.m-check { color: #00e676; font-size: 10px; }
+.m-check-off { color: #5a6478; font-size: 10px; }
+
+.m-group-lbl { font-size: 9px; letter-spacing: 0.15em; margin: 6px 0 3px; font-weight: 700; }
+.buy-lbl { color: #00e676; }
+.sell-lbl { color: #ff4060; }
+.close-lbl { color: #ff8c00; }
+
+.m-btn-row { display: flex; gap: 3px; margin-bottom: 4px; }
+
+.m-btn-buy {
+  flex: 1;
+  background: #0a3d1a;
+  border: 1px solid rgba(0,230,118,0.3);
+  color: #00e676;
+  padding: 8px 4px;
+  border-radius: 3px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.m-btn-sell {
+  flex: 1;
+  background: #3d0a14;
+  border: 1px solid rgba(255,64,96,0.3);
+  color: #ff4060;
+  padding: 8px 4px;
+  border-radius: 3px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.m-btn-close-pct {
+  flex: 1;
+  background: #3d1a00;
+  border: 1px solid rgba(255,140,0,0.3);
+  color: #ff8c00;
+  padding: 8px 2px;
+  border-radius: 3px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.m-btn-buy:active, .m-btn-buy.flash { background: #0f6030 !important; }
+.m-btn-sell:active, .m-btn-sell.flash { background: #6d1020 !important; }
+.m-btn-close-pct:active, .m-btn-close-pct.flash { background: #6d3000 !important; }
+
+/* FEATURES */
+.features {
+  display: flex;
+  gap: 32px;
+  margin-top: 64px;
+  animation: fadeDown 0.8s ease 0.5s both;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--gray);
+}
+
+.feature-icon {
+  color: var(--green);
+  font-size: 15px;
+}
+
+/* COUNTER */
+.counter-wrap {
+  margin-top: 56px;
+  animation: fadeDown 0.8s ease 0.55s both;
+}
+
+.counter-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gray);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.counter {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.counter-block {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 16px 20px;
+  min-width: 76px;
+  text-align: center;
+}
+
+.counter-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1;
+  display: block;
+}
+
+.counter-unit {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--gray);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 4px;
+  display: block;
+}
+
+/* FOOTER */
+footer {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  background: rgba(6,8,9,0.8);
+  backdrop-filter: blur(8px);
+  z-index: 10;
+}
+
+.footer-left {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gray);
+}
+
+.footer-right {
+  font-size: 12px;
+  color: var(--gray);
+}
+
+.footer-right a {
+  color: var(--green);
+  text-decoration: none;
+}
+
+/* ANIMATIONS */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .features { gap: 20px; }
+  .counter-block { min-width: 60px; padding: 12px 14px; }
+  .counter-num { font-size: 30px; }
+  footer { padding: 12px 20px; }
+  .form-inner button { padding: 16px 18px; font-size: 14px; }
+}
+</style>
+</head>
+<body>
+
+<div class="chart-bg"></div>
+<div class="glow"></div>
+
+<main>
+  <div class="logo">888 <span>MAGIC</span>TRADE · magictrade.io</div>
+
+  <div class="badge">
+    <div class="badge-dot"></div>
+    Launching Soon
+  </div>
+
+  <h1>
+    TRADE
+    <span class="accent">SMARTER.</span>
+  </h1>
+
+  <p class="sub">
+    The risk management tool built for NinjaTrader 8. One click. Automatic sizing. Full control.
+  </p>
+
+  <!-- ANIMATED MOCKUP -->
+  <div class="mockup-wrap" style="animation: fadeDown 0.8s ease 0.32s both;">
+    <div class="mockup-outer">
+      <div class="mockup-titlebar">
+        <span class="mockup-title">888 MAGIC TRADE</span>
+        <span class="mockup-x">✕</span>
+      </div>
+      <div class="mockup-body">
+        <!-- Info row -->
+        <div class="m-info-row">
+          <span class="m-label">MNQ</span>
+          <span class="m-dim">tick 0.25 · val $0.5</span>
+        </div>
+        <!-- Risk row -->
+        <div class="m-row">
+          <span class="m-label">Risk $</span>
+          <span class="m-input" id="mRisk">500</span>
+          <span class="m-label" style="margin-left:auto">Ordin</span>
+          <span class="m-select">Market ▾</span>
+        </div>
+        <!-- Show Magic -->
+        <div class="m-row-btns">
+          <button class="m-btn-show" id="mShowBtn" onclick="toggleLines()">✚  SHOW MAGIC</button>
+          <button class="m-btn-follow" id="mFollow">ON</button>
+        </div>
+        <!-- Execute row -->
+        <div class="m-row-btns">
+          <button class="m-btn-exec">▶  EXECUTE</button>
+          <button class="m-btn-dir" id="mDir">L</button>
+        </div>
+        <!-- Bottom row -->
+        <div class="m-row-btns">
+          <button class="m-btn-reset">↺ Reset</button>
+          <button class="m-btn-close">✕ CLOSE POS</button>
+          <button class="m-btn-gear">⚙</button>
+        </div>
+        <!-- Status -->
+        <div class="m-status" id="mStatus">SHOW MAGIC → seteaza → EXECUTE</div>
+      </div>
+
+      <!-- LIVE INFO -->
+      <div class="mockup-section">
+        <div class="m-section-label">LIVE INFO</div>
+        <div class="m-pnl-num" id="mPnl">0</div>
+        <div class="m-pnl-row">
+          <div class="m-pnl-col loss">
+            <div class="m-pnl-lbl">LOSS</div>
+            <div class="m-pnl-val" id="mLoss">-$0</div>
+          </div>
+          <div class="m-pnl-col profit">
+            <div class="m-pnl-lbl">PROFIT</div>
+            <div class="m-pnl-val" id="mProfit">+$0</div>
+          </div>
+        </div>
+        <div class="m-entry-info" id="mEntryInfo">
+          Entry : 0.00<br>
+          SL &nbsp;&nbsp;0.00 &nbsp;(-0.0 pts)<br>
+          TP &nbsp;&nbsp;0.00 &nbsp;(+0.0 pts)
+        </div>
+      </div>
+
+      <!-- MANAGEMENT -->
+      <div class="mockup-section">
+        <div class="m-section-label">⚙ &nbsp;MANAGEMENT</div>
+        <button class="m-btn-be">⚡ &nbsp;BREAKEVEN</button>
+        <div class="m-row" style="margin:8px 0 4px">
+          <span class="m-check">✔ BE automat</span>
+          <span class="m-check-off" style="margin-left:auto">▢ Partial close</span>
+        </div>
+        <div class="m-row" style="margin-bottom:8px">
+          <span class="m-dim">La R:</span><span class="m-input-sm">1.0</span>
+          <span class="m-dim" style="margin-left:auto">La R:</span><span class="m-input-sm">1.0</span>
+          <span class="m-dim">%:</span><span class="m-input-sm">50</span>
+        </div>
+        <div class="m-group-lbl buy-lbl">BUY</div>
+        <div class="m-btn-row">
+          <button class="m-btn-buy" onclick="flash(this,'buy')">1</button>
+          <button class="m-btn-buy" onclick="flash(this,'buy')">2</button>
+          <button class="m-btn-buy" onclick="flash(this,'buy')">3</button>
+          <button class="m-btn-buy" onclick="flash(this,'buy')">4</button>
+          <button class="m-btn-buy" onclick="flash(this,'buy')">5</button>
+        </div>
+        <div class="m-group-lbl sell-lbl">SELL</div>
+        <div class="m-btn-row">
+          <button class="m-btn-sell" onclick="flash(this,'sell')">1</button>
+          <button class="m-btn-sell" onclick="flash(this,'sell')">2</button>
+          <button class="m-btn-sell" onclick="flash(this,'sell')">3</button>
+          <button class="m-btn-sell" onclick="flash(this,'sell')">4</button>
+          <button class="m-btn-sell" onclick="flash(this,'sell')">5</button>
+        </div>
+        <div class="m-group-lbl close-lbl">CLOSE %</div>
+        <div class="m-btn-row">
+          <button class="m-btn-close-pct" onclick="flash(this,'close')">20%</button>
+          <button class="m-btn-close-pct" onclick="flash(this,'close')">30%</button>
+          <button class="m-btn-close-pct" onclick="flash(this,'close')">50%</button>
+          <button class="m-btn-close-pct" onclick="flash(this,'close')">80%</button>
+          <button class="m-btn-close-pct" onclick="flash(this,'close')">100%</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="offer">
+    <span class="offer-tag">50% OFF</span>
+    <span class="offer-text">for everyone on the early access list</span>
+  </div>
+
+  <!-- FORM -->
+  <div class="form-wrap">
+    <div id="formContainer">
+      <div class="form-inner">
+        <input type="email" id="emailInput" placeholder="your@email.com" />
+        <button onclick="handleSubmit()">Get Early Access</button>
+      </div>
+      <p class="form-note">No spam. Just your 50% off code at launch.</p>
+    </div>
+    <div class="success" id="successMsg">
+      <div class="success-icon">✓</div>
+      <div class="success-title">You're on the list.</div>
+      <p class="success-sub">We'll send your 50% off code the moment 888 MagicTrade goes live. Stay sharp.</p>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="features">
+    <div class="feature"><span class="feature-icon">⚡</span> Auto risk sizing</div>
+    <div class="feature"><span class="feature-icon">▶</span> One-click execution</div>
+    <div class="feature"><span class="feature-icon">🎯</span> Instant breakeven</div>
+    <div class="feature"><span class="feature-icon">📊</span> Scalping panel</div>
+    <div class="feature"><span class="feature-icon">🔒</span> NinjaTrader 8</div>
+  </div>
+
+  <!-- COUNTDOWN -->
+  <div class="counter-wrap">
+    <div class="counter-label">Launching in</div>
+    <div class="counter">
+      <div class="counter-block">
+        <span class="counter-num" id="days">00</span>
+        <span class="counter-unit">Days</span>
+      </div>
+      <div class="counter-block">
+        <span class="counter-num" id="hours">00</span>
+        <span class="counter-unit">Hours</span>
+      </div>
+      <div class="counter-block">
+        <span class="counter-num" id="mins">00</span>
+        <span class="counter-unit">Mins</span>
+      </div>
+      <div class="counter-block">
+        <span class="counter-num" id="secs">00</span>
+        <span class="counter-unit">Secs</span>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-left">© 2025 magictrade.io · Part of Uplevel Trading</div>
+  <div class="footer-right"><a href="mailto:support@magictrade.io">support@magictrade.io</a></div>
+</footer>
+
+<script>
+let linesShown = false;
+let isLong = true;
+let demoInterval = null;
+
+const RISK = 500;
+const TICK_SZ = 0.25;
+const TICK_VAL = 0.5; // MNQ
+const SL_FIXED = 21518.50;
+const TP_FIXED = 21594.75;
+
+function toggleLines() {
+  linesShown = !linesShown;
+  const btn = document.getElementById('mShowBtn');
+  if (linesShown) {
+    btn.style.background = '#1a4a2a';
+    btn.style.boxShadow = '0 0 12px rgba(0,230,118,0.3)';
+    document.getElementById('mStatus').textContent = 'Liniile sunt setate → EXECUTE';
+    startDemo();
+  } else {
+    btn.style.background = '#0a3d1a';
+    btn.style.boxShadow = 'none';
+    document.getElementById('mStatus').textContent = 'SHOW MAGIC → seteaza → EXECUTE';
+    stopDemo();
+  }
+}
+
+function startDemo() {
+  let entry = 21543.50;
+  let direction = 1;
+
+  demoInterval = setInterval(() => {
+    // Entry urmareste pretul — miscare mica
+    entry += (Math.random() - 0.48) * 0.75;
+    entry = Math.round(entry / TICK_SZ) * TICK_SZ;
+
+    // Distanta Entry -> SL (variaza cu fiecare tick)
+    const slDist = Math.abs(entry - SL_FIXED);
+    const tpDist = Math.abs(TP_FIXED - entry);
+
+    // Qty din Risk $ / (slDist * tickVal / tickSz)
+    const slTicks = slDist / TICK_SZ;
+    const qty = Math.max(1, Math.round(RISK / (slTicks * TICK_VAL)));
+
+    // Loss ~ $500 (variaza putin)
+    const loss = Math.round(slTicks * TICK_VAL * qty);
+    // Profit variaza cu distanta TP
+    const tpTicks = tpDist / TICK_SZ;
+    const profit = Math.round(tpTicks * TICK_VAL * qty);
+
+    const slPts = (slDist).toFixed(2);
+    const tpPts = (tpDist).toFixed(2);
+
+    document.getElementById('mPnl').textContent = qty;
+    document.getElementById('mLoss').textContent = '-$' + loss;
+    document.getElementById('mProfit').textContent = '+$' + profit;
+    document.getElementById('mEntryInfo').innerHTML =
+      `Entry : ${entry.toFixed(2)}<br>` +
+      `SL &nbsp;&nbsp;${SL_FIXED.toFixed(2)} &nbsp;(-${slPts} pts)<br>` +
+      `TP &nbsp;&nbsp;${TP_FIXED.toFixed(2)} &nbsp;(+${tpPts} pts)`;
+
+  }, 500);
+}
+
+function stopDemo() {
+  if (demoInterval) { clearInterval(demoInterval); demoInterval = null; }
+  document.getElementById('mPnl').textContent = '0';
+  document.getElementById('mPnl').style.color = '#fff';
+  document.getElementById('mLoss').textContent = '-$0';
+  document.getElementById('mProfit').textContent = '+$0';
+  document.getElementById('mEntryInfo').innerHTML = 'Entry : 0.00<br>SL &nbsp;&nbsp;0.00 &nbsp;(-0.0 pts)<br>TP &nbsp;&nbsp;0.00 &nbsp;(+0.0 pts)';
+}
+
+function flash(btn, type) {
+  btn.classList.add('flash');
+  setTimeout(() => btn.classList.remove('flash'), 200);
+}
+
+// Auto-animate direction toggle
+setInterval(() => {
+  isLong = !isLong;
+  const dir = document.getElementById('mDir');
+  if (dir) {
+    dir.textContent = isLong ? 'L' : 'S';
+    dir.style.background = isLong ? '#0a3d1a' : '#3d0a14';
+    dir.style.borderColor = isLong ? 'rgba(0,230,118,0.4)' : 'rgba(255,64,96,0.4)';
+    dir.style.color = isLong ? '#00e676' : '#ff4060';
+  }
+}, 3000);
+
+// COUNTDOWN — seteaza data de lansare aici
+const launchDate = new Date('2025-07-01T00:00:00');
+
+function updateCountdown() {
+  const now = new Date();
+  const diff = launchDate - now;
+  if (diff <= 0) {
+    document.getElementById('days').textContent = '00';
+    document.getElementById('hours').textContent = '00';
+    document.getElementById('mins').textContent = '00';
+    document.getElementById('secs').textContent = '00';
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('days').textContent  = String(d).padStart(2,'0');
+  document.getElementById('hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('mins').textContent  = String(m).padStart(2,'0');
+  document.getElementById('secs').textContent  = String(s).padStart(2,'0');
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// FORM SUBMIT
+function handleSubmit() {
+  const email = document.getElementById('emailInput').value.trim();
+  if (!email || !email.includes('@')) {
+    document.getElementById('emailInput').style.borderLeft = '2px solid #ff1744';
+    document.getElementById('emailInput').focus();
+    return;
+  }
+  // TODO: trimite emailul la Supabase sau Mailchimp
+  // fetch('/api/waitlist', { method: 'POST', body: JSON.stringify({ email }) })
+  
+  document.getElementById('formContainer').style.display = 'none';
+  const success = document.getElementById('successMsg');
+  success.style.display = 'flex';
+}
+
+// Enter key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') handleSubmit();
+});
+</script>
+
+</body>
+</html>
